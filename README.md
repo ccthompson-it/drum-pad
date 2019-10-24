@@ -1,22 +1,45 @@
-# Fullstack boilerplate
+# Dev-Appcademy
 
-To get started:
+## Team agreements
 
-```
-git clone https://github.com/dev-academy-challenges/boilerplate-fullstack [your-project-name]
-cd [your-project-name]
-npm install # to install dependencies
-npm run dev # to start the dev server
-```
+### MVP
 
-You can find the server running on [http://localhost:3000](http://localhost:3000).
+Completed main page + 5 teacher components
 
-This repo includes:
+### "Roles"
 
-* a single, simple API endpoint (`/api/v1/fruits`)
-* a single React component (`<App />`)
-* a fake database module (`db.js`)
-* an API client module (`apiClient.js`)
-* configuration for Jest and Enzyme (including JSDOM)
-* configuration for server-side debugging in VS Code
-* a single client-side test (`/tests/client/App.test.js`)
+- Product owner: Matt
+- GitMaster: Matt
+- Fun/VibeMasters: Sylvia, Nick
+- VisionMaster: Caleb
+- StandUpMaster/Timekeeper: Noemie
+
+### Timeline
+
+- Thursday: Backend is done
+- Friday:
+- Sat/Sun:
+- Monday
+- Tuesday
+- Wednesday
+
+**Daily**
+
+Sart the day with what went well and what didn't the day before.
+Stand ups at 9, 10:30, 14, 15:30, 16:50.
+Review this document.
+
+### *Dealing with conflicts*
+
+## Needs & Wants
+
+- **Matt**: Exercising
+- **Caleb**: Smokos. Everyone has clarity on what we are building.
+- **Nick**: Exercising
+- **Sylvia**: No late nights
+- **Noemie**: Everyone to be heard
+
+## Weekend
+
+Saturday: Noemie, Matt(pm)
+Sunday: Sylvia, Matt, Noemie, Matt(pm)

@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from 'react'
+import { connect } from 'react-redux'
 
 import Header from './Header'
 import BeatPad from './BeatPad'
@@ -19,4 +20,4 @@ class App extends Component {
   }
 }
 
-export default App
+export default connect()(App)
