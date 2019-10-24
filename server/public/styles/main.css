@@ -1,0 +1,169 @@
+/* 
+colors:
+
+#303841
+#3a4750
+#d72323
+#eeeeee
+
+*/
+
+
+body {
+  background-color: #303841;
+  
+}
+
+/* Header */
+
+header {
+  position: fixed;
+  width: 95vw;
+  top: 0;
+  left: 0;
+}
+
+#main-title {
+  color: #eeeeee;
+  font-family: 'Chelsea Market', cursive;
+  font-size: 5vw;
+  float: left;
+  margin-left: 10vw;
+  margin-top: 3vw;
+}
+
+#controls {
+  height: 25vh;
+  float: right;
+}
+
+#controls > .control {
+  background-color: #3a4750;
+  color: #eeeeee; 
+  vertical-align: middle;
+}
+
+
+#sound-pad {
+  width: 60vw;
+  margin-left: 20vw;
+  margin-top: 25vh;
+}
+
+/* Footer */
+
+footer {
+  position: fixed;
+  width: 95vw;
+  left: 1vw;
+  bottom: 1vw;
+  font-family: 'Chelsea Market', cursive;
+  color: #3a4750;
+}
+
+footer > p {
+  float: left;
+  margin: 0;
+  font-size: 1.5vw;
+}
+
+#sound-links {
+  float: right;
+}
+
+a {
+  text-decoration: none;
+  color: #3a4750;
+  font-size: 1vw;
+}
+
+
+
+a:hover {
+  color: #eeeeee;
+  transition: ease-in-out .25s;
+}
+
+
+/* Buttons */
+
+.round {
+  font-family: 'Chelsea Market', cursive;
+  font-size: 1.35vw;
+  width: 9.5vw;
+  height: 9.5vw;
+  margin-right: 1vw;
+  margin-left: 1vw;
+  margin-top: 3vw;
+  border-radius: 50%;
+  color: #303841;
+  background-color: #d72323;
+  border: none;
+  outline: none;
+  box-shadow: 0px 0px .5vw #eeeeee;
+}
+
+.round:hover {
+  background-color: #e00303;
+  color: #eeeeee;
+  transition: ease-in-out .15s;
+  box-shadow: 0px .3vw .5vw #eeeeee;
+}
+
+.round:active {
+  box-shadow: 0px 0px .5vw #eeeeee;
+  background-color: #d72323;
+}
+
+/* Record Button */ 
+
+span {
+  display: block;
+  background-color: #a75c5c;
+  transition: ease-in-out .2s;
+  position: relative;
+  left: 7.5%;
+  width: 85%;
+  height: 85%;
+  border-radius: 50%;
+}
+
+#rec-status {
+  background-color: #d72323;
+  transition: ease-in-out .2s;
+}
+
+#inner-record {
+  position: absolute;
+  top: 5%;
+  left: 5%;
+  width: 90%;
+  height: 90%;
+  border-radius: 50%;
+  background-color: #3a4750;
+  margin: auto;
+  vertical-align: middle;
+  box-shadow: 0px 0px .3vw #3a4750;
+}
+
+#inner-record > p {
+  margin: 0;
+  margin-top: 35%;
+}
+
+/* Slider */ 
+
+#ticker-box {
+  display: flex;
+  position: fixed;
+  bottom: 5vw;
+  right: 3vw;
+  z-index: -1;
+}
+
+#slider-box {
+  padding-top: 7vw;
+}
+#slider {
+  width: 15vw;
+}

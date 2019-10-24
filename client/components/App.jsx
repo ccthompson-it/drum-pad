@@ -1,29 +1,20 @@
-import React from 'react'
+import React, { Component, Fragment } from 'react'
 
-import { getFruits } from '../apiClient'
+import Header from './Header'
+import BeatPad from './BeatPad'
+import Metronome from './Metronome'
+import Footer from './Footer'
 
-class App extends React.Component {
-  state = {
-    fruits: []
-  }
+class App extends Component {
 
-  componentDidMount () {
-    getFruits()
-      .then(fruits => {
-        this.setState({fruits})
-      })
-  }
-
-  render () {
+  render() {
     return (
-      <div className='app'>
-        <h1>Fullstack Boilerplate</h1>
-        <ul>
-          {this.state.fruits.map(fruit => (
-            <li key={fruit}>{fruit}</li>
-          ))}
-        </ul>
-      </div>
+      <Fragment>
+        <Header />
+        <BeatPad />
+        <Metronome />
+        <Footer />
+      </Fragment>
     )
   }
 }
