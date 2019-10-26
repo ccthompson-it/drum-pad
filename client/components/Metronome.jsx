@@ -14,7 +14,6 @@ class Metronome extends SoundPlayer {
   }
 
   handleSlider = (e) => {
-    console.log(e.target.value)
     this.sliderValue = e.target.value
   }
 
