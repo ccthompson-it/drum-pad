@@ -14,6 +14,10 @@ class App extends SoundPlayer {
     document.addEventListener('keypress', this.handleKeyPress)
   }
 
+  componentWillUnmount() {
+    document.removeEventListener('keypress', this.handleKeyPress)
+  }
+
   handleKeyPress = ({ key }) => {
     if (isNaN(key)) { return }
     const keyMatches = ['basskick', 'kick', 'snare', 'clap', 'snap', 'cowbell', 'crash', 'hat', 'softhat', 'coconut']
