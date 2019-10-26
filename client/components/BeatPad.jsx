@@ -1,19 +1,21 @@
-import React, { Component, Fragment } from 'react'
+import React from 'react'
 
-class BeatPad extends Component {
+import SoundPlayer from './SoundPlayer'
+
+class BeatPad extends SoundPlayer {
   render() {
     return (
       <div id="sound-pad">
-        <button className="sound round" id="basskick">Basskick (0)</button>
-        <button className="sound round" id="kick">Kick (1)</button>
-        <button className="sound round" id="snare">Snare (2)</button>
-        <button className="sound round" id="clap">Clap (3)</button>
-        <button className="sound round" id="snap">snap (4)</button>
-        <button className="sound round" id="cowbell">Cowbell (5)</button>
-        <button className="sound round" id="crash">Crash (6)</button>
-        <button className="sound round" id="hat">Hat (7)</button>
-        <button className="sound round" id="softhat">Soft Hat (8)</button>
-        <button className="sound round" id="coconut">Coconut (9)</button>
+        <button className="sound round" onClick={() => this.playAudio("basskick")}>Basskick (0)</button>
+        <button className="sound round" onClick={() => this.playAudio("kick")}>Kick (1)</button>
+        <button className="sound round" onClick={() => this.playAudio("snare")}>Snare (2)</button>
+        <button className="sound round" onClick={() => this.playAudio("clap")}>Clap (3)</button>
+        <button className="sound round" onClick={() => this.playAudio("snap")}>snap (4)</button>
+        <button className="sound round" onClick={() => this.playAudio("cowbell")}>Cowbell (5)</button>
+        <button className="sound round" onClick={() => this.playAudio("crash")}>Crash (6)</button>
+        <button className="sound round" onClick={() => this.playAudio("hat")}>Hat (7)</button>
+        <button className="sound round" onClick={() => this.playAudio("softhat")}>Soft Hat (8)</button>
+        <button className="sound round" onClick={() => this.playAudio("coconut")}>Coconut (9)</button>
       </div>
     )
   }
