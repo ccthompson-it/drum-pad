@@ -12,7 +12,6 @@ class Controls extends Component {
   }
 
   render() {
-    console.log(this.state.recording)
     return (
       <div id="controls">
         <button id="clear" className="round control">Clear Recording</button>
