@@ -1,8 +1,7 @@
-export const CHANGE_BEAT = 'CHANGE_BEAT'
+export const SET_RECORDING = 'SET_RECORDING'
 
-export const changePage = (newBeat) => {
+export const setRecording = () => {
   return {
-    type: CHANGE_BEAT,
-    newBeat
+    type: SET_RECORDING
   }
 }

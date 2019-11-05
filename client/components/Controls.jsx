@@ -1,10 +1,11 @@
-import React, { Component } from 'react'
+import React from 'react'
+import SoundPlayer from './SoundPlayer'
 
-class Controls extends Component {
+class Controls extends SoundPlayer {
   state = {
     recording: false
   }
-
+  
   toggleRecord = () => {
     this.setState({
       recording: !this.state.recording
