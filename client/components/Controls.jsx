@@ -6,14 +6,28 @@ import {setRecording, newRecording} from '../actions'
 
 class Controls extends SoundPlayer {
   
+
+
   toggleRecord = () => {
     let { dispatch } = this.props
     dispatch(setRecording())
   }
 
   clearRecording = () => {
+    alert('Recording Cleared!')
     let { dispatch } = this.props
     dispatch(newRecording())
+  }
+
+  playRecording = (i=0) => {
+    let beat = this.props.currentBeat
+    console.log(beat, i)
+    this.playAudio(beat[i].sound)
+
+    if(i+1 == beat.length) { return }
+    
+    let waitTime = beat[i+1].timing - beat[i].timing
+    setTimeout(() => this.playRecording(i+1), waitTime)
   }
 
   render() {
@@ -27,7 +41,7 @@ class Controls extends SoundPlayer {
             </div>
           </span>
         </button>
-        <button id="play" className="round control">Playback Audio</button>
+        <button id="play" className="round control" onClick={() => {this.playRecording()}}>Playback Audio</button>
       </div>
     )
   }
@@ -35,7 +49,8 @@ class Controls extends SoundPlayer {
 
 function mapStateToProps(state) {
   return {
-    recording: state.recording
+    recording: state.recording,
+    currentBeat: state.currentBeat
   }
 }
 
