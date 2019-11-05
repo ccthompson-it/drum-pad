@@ -21,7 +21,6 @@ class Controls extends SoundPlayer {
 
   playRecording = (i=0) => {
     let beat = this.props.currentBeat
-    console.log(beat, i)
     this.playAudio(beat[i].sound)
 
     if(i+1 == beat.length) { return }
