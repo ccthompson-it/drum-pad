@@ -14,7 +14,6 @@ class Metronome extends SoundPlayer {
   }
 
   handleDropdown = (e) => {
-    console.log(e)
     this.bpmValue = e.target.value
   }
 

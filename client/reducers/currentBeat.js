@@ -1,10 +1,17 @@
-import {CHANGE_BEAT} from '../actions'
+import {NEW_BEAT, ADDTO_BEAT} from '../actions'
 
 function currentBeat (state = [], action) {
   switch (action.type) {
-    case CHANGE_BEAT:
-      return action.newBeat
-
+    case NEW_BEAT:
+      return []
+    case ADDTO_BEAT:
+      return [
+        ...state,
+        {
+          sound: action.sound,
+          timing: Date.now()
+        }
+      ]
     default:
       return state
   }
