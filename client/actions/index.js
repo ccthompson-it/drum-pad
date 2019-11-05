@@ -13,3 +13,10 @@ export const newRecording = () => {
     type: NEW_BEAT
   }
 }
+
+export const addToBeat = (sound) => {
+  return {
+    type: ADDTO_BEAT,
+    sound
+  }
+}

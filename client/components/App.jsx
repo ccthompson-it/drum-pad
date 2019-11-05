@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react'
-import { connect } from 'react-redux'
+import {connect} from 'react-redux'
 
 import SoundPlayer from './SoundPlayer'
 
@@ -36,4 +36,10 @@ class App extends SoundPlayer {
   }
 }
 
-export default connect()(App)
+function mapStateToProps(state) {
+  return {
+    recording: state.recording
+  }
+}
+
+export default connect(mapStateToProps)(App)

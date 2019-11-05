@@ -1,4 +1,5 @@
 import React from 'react'
+import {connect} from 'react-redux'
 
 import SoundPlayer from './SoundPlayer'
 
@@ -21,4 +22,10 @@ class BeatPad extends SoundPlayer {
   }
 }
 
-export default BeatPad
+function mapStateToProps(state) {
+  return {
+    recording: state.recording
+  }
+}
+
+export default connect(mapStateToProps)(BeatPad)

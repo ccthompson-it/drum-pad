@@ -7,7 +7,10 @@ function currentBeat (state = [], action) {
     case ADDTO_BEAT:
       return [
         ...state,
-        action.nextBeat
+        {
+          sound: action.sound,
+          timing: Date.now()
+        }
       ]
     default:
       return state
