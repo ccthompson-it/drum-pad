@@ -2,7 +2,7 @@ import React from 'react'
 import SoundPlayer from './SoundPlayer'
 import { connect } from 'react-redux'
 
-import {setRecording} from '../actions'
+import {setRecording, newRecording} from '../actions'
 
 class Controls extends SoundPlayer {
   
@@ -11,10 +11,15 @@ class Controls extends SoundPlayer {
     dispatch(setRecording())
   }
 
+  clearRecording = () => {
+    let { dispatch } = this.props
+    dispatch(newRecording())
+  }
+
   render() {
     return (
       <div id="controls">
-        <button id="clear" className="round control">Clear Recording</button>
+        <button id="clear" className="round control" onClick={this.clearRecording}>Clear Recording</button>
         <button id="record" className="round control" onClick={this.toggleRecord}>
           <span id={this.props.recording ? "rec-status": ""}>
             <div id="inner-record">
