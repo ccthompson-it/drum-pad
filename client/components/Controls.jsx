@@ -1,12 +1,19 @@
 import React from 'react'
-import SoundPlayer from './SoundPlayer'
 import { connect } from 'react-redux'
+
+import SoundPlayer from './SoundPlayer'
+import Popup from './Popup'
 
 import {setRecording, newRecording} from '../actions'
 
 class Controls extends SoundPlayer {
-  
+  constructor(props) {
+    super(props)
 
+    this.state = {
+      popupShowing: false
+    }
+  }
 
   toggleRecord = () => {
     let { dispatch } = this.props
@@ -29,8 +36,13 @@ class Controls extends SoundPlayer {
     setTimeout(() => this.playRecording(i+1), waitTime)
   }
 
+  togglePopup = () => {
+    this.setState({popupShowing: !this.state.popupShowing})
+  }
+
   render() {
     return (
+      <React.Fragment>
       <div id="controls">
         <button id="clear" className="round control" onClick={this.clearRecording}>Clear Recording</button>
         <button id="record" className="round control" onClick={this.toggleRecord}>
@@ -40,8 +52,11 @@ class Controls extends SoundPlayer {
             </div>
           </span>
         </button>
+        <button id="toggle" className="round control" onClick={this.togglePopup}>See Recording</button>
         <button id="play" className="round control" onClick={() => {this.playRecording()}}>Playback Audio</button>
       </div>
+      {this.state.popupShowing && <Popup togglePopup={this.togglePopup} />}
+      </React.Fragment>
     )
   }
 }
