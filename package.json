@@ -24,7 +24,7 @@
         "@babel/plugin-transform-runtime",
         {
           "regenerator": true
-        }
+        } 
       ]
     ]
   },

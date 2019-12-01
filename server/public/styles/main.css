@@ -211,3 +211,35 @@ span {
   color: #eeeeee;
   font-family: 'Chelsea Market', cursive;
 }
+
+.graph {
+  height: 60vh;
+  width: 45vw;
+  border-bottom: 1px solid white;
+  border-left: 1px solid white;
+}
+
+.time-labels {
+  display: flex;
+  justify-content: space-between;
+  width: 45vw;
+  margin-left: 15vw;
+  background-color: red;
+}
+
+.graph-wrapper {
+  display: flex;
+}
+
+.sound-labels {
+  height: 60vh;
+  width: 15vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.sound-labels > p {
+  color: #eeeeee;
+  font-family: 'Chelsea Market', cursive;
+}
