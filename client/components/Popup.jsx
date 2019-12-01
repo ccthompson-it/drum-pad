@@ -1,6 +1,19 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
+const soundByte = {
+  basskick: 9,
+  kick: 8,
+  snare: 7,
+  clap: 6,
+  snap: 5,
+  cowbell: 4,
+  crash: 3,
+  hat: 2,
+  softhat: 1,
+  coconut: 0
+}
+
 class Popup extends React.Component {
 
   totalTime = 0
@@ -9,12 +22,17 @@ class Popup extends React.Component {
   makeDot = (sound, timing) => {
     let percentage = (timing - this.startTime) / this.totalTime
     console.log(percentage)
-    let style = {
-      paddingLeft: (timing - this.startTime) / (this.totalTime * 0.1) + "vw"
-    }
+
+    let num = soundByte[sound]
+      let style = {
+        marginLeft: 45 * ((timing - this.startTime) / (this.totalTime)) + "vw",
+        marginTop: 6.45 * num + "vh",
+        left: "29vw",
+      }
     return (
       <React.Fragment>
-        <p className="popup-text" style={style}>{sound} {timing}</p>
+        {/* <p className="popup-text" style={style}>{sound} {timing}</p> */}
+        <p className="test-dot" style={style}></p>
       </React.Fragment>
     )
   }

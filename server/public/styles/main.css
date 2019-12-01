@@ -129,7 +129,7 @@ span {
 }
 
 #rec-status {
-  background-color: #d72323;
+  background-color: greenyellow;
   transition: ease-in-out .2s;
 }
 
@@ -224,7 +224,7 @@ span {
   justify-content: space-between;
   width: 45vw;
   margin-left: 15vw;
-  background-color: red;
+  color: white;
 }
 
 .graph-wrapper {
@@ -242,4 +242,12 @@ span {
 .sound-labels > p {
   color: #eeeeee;
   font-family: 'Chelsea Market', cursive;
+}
+
+.test-dot {
+  width: 1em;
+  height: 1em;
+  border-radius: 50%;
+  background-color: yellow;
+  position: fixed;
 }
