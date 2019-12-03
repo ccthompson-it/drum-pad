@@ -5,7 +5,9 @@ colors:
 #d72323
 #eeeeee
 */
-
+* {
+  margin: 0;
+}
 
 body {
   background-color: #303841;
@@ -127,7 +129,7 @@ span {
 }
 
 #rec-status {
-  background-color: #d72323;
+  background-color: greenyellow;
   transition: ease-in-out .2s;
 }
 
@@ -162,6 +164,90 @@ span {
 #slider-box {
   padding-top: 7vw;
 }
+
 #slider {
   width: 15vw;
+}
+
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  background-color: rgba(0, 0, 0, 0.5)
+}
+
+.popup-box {
+  position: fixed;
+  width: 72vw;
+  left: 10vw;
+  height: 72vh;
+  top: 10vh;
+  background-color: #303841;
+  border-radius: 5vw;
+  padding: 4vh 4vw;
+}
+
+#popup-close {
+  position: fixed;
+  top: 12vh;
+  left: 83vw;
+  font-size: 2vw;
+  color: #eeeeee;
+  font-family: 'Chelsea Market', cursive;
+  cursor: pointer;
+  transition: ease-in-out 0.25s;
+}
+
+#popup-close:hover {
+  font-size: 2.5vw;
+  left: 82.75vw;
+  color: #d72323;
+}
+
+.popup-text {
+  color: #eeeeee;
+  font-family: 'Chelsea Market', cursive;
+}
+
+.graph {
+  height: 60vh;
+  width: 45vw;
+  border-bottom: 1px solid white;
+  border-left: 1px solid white;
+}
+
+.time-labels {
+  display: flex;
+  justify-content: space-between;
+  width: 45vw;
+  margin-left: 15vw;
+  color: white;
+}
+
+.graph-wrapper {
+  display: flex;
+}
+
+.sound-labels {
+  height: 60vh;
+  width: 15vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.sound-labels > p {
+  color: #eeeeee;
+  font-family: 'Chelsea Market', cursive;
+}
+
+.test-dot {
+  width: 1em;
+  height: 1em;
+  border-radius: 50%;
+  background-color: yellow;
+  position: fixed;
 }
