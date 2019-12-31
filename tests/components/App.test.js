@@ -28,8 +28,21 @@ describe("<App /> component", () => {
     await instance.componentDidMount()
 
     
-    map.keypress("3")
+    map.keypress("0")
 
     expect(instance.handleKeyPress).toHaveBeenCalled()
+  })
+
+  test("handleKeyPress function only plays audio on number key presses", () => {
+    dispatch = jest.fn()
+    wrapper = shallow(<App dispatch={dispatch} />)
+    let instance = wrapper.instance()
+    instance.playAudio = jest.fn()
+
+    instance.handleKeyPress("a")
+    expect(instance.playAudio).not.toHaveBeenCalled()
+
+    instance.handleKeyPress("3")
+    expect(instance.playAudio).toHaveBeenCalled()
   })
 })
