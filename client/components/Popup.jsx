@@ -19,9 +19,7 @@ class Popup extends React.Component {
   totalTime = 0
   startTime = 0
 
-  makeDot = (sound, timing) => {
-    let percentage = (timing - this.startTime) / this.totalTime
-    console.log(percentage)
+  makeDot = (sound, timing, i) => {
 
     let num = soundByte[sound]
     let style = {
@@ -30,7 +28,7 @@ class Popup extends React.Component {
       left: "29vw",
     }
     return (
-      <React.Fragment>
+      <React.Fragment key={i}>
         {/* <p className="popup-text" style={style}>{sound} {timing}</p> */}
         <p className="test-dot" style={style}></p>
       </React.Fragment>
@@ -62,7 +60,7 @@ class Popup extends React.Component {
                 <p>Bass Kick</p>
               </div>
               <div className="graph">
-                {currentBeat.map(currentSound => this.makeDot(currentSound.sound, currentSound.timing))}
+                {currentBeat.map((currentSound, i) => this.makeDot(currentSound.sound, currentSound.timing, i))}
                 <p id="popup-close" onClick={togglePopup}>X</p>
               </div>
             </div>
