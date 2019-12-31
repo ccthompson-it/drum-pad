@@ -39,10 +39,10 @@ describe("<App /> component", () => {
     let instance = wrapper.instance()
     instance.playAudio = jest.fn()
 
-    instance.handleKeyPress("a")
+    instance.handleKeyPress({key: "a"})
     expect(instance.playAudio).not.toHaveBeenCalled()
 
-    instance.handleKeyPress("3")
+    instance.handleKeyPress({key: "3"})
     expect(instance.playAudio).toHaveBeenCalled()
   })
 })
