@@ -15,6 +15,8 @@ class Controls extends SoundPlayer {
     }
   }
 
+  
+
   toggleRecord = () => {
     let { dispatch, recording, currentBeat } = this.props
 
