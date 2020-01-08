@@ -10,7 +10,7 @@
     "build": "webpack --config client/webpack.config.js",
     "server": "node server",
     "start": "run-s build server",
-    "test": "jest --verbose --watchAll"
+    "test": "jest --verbose --watchAll --colors"
   },
   "babel": {
     "presets": [

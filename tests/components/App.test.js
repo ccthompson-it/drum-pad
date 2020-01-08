@@ -15,6 +15,7 @@ describe("<App /> component", () => {
   let dispatch, wrapper, instance, map
     
   test("Pressing a key calls the handleKeyPress function", async () => {
+    expect.assertions(1)
     dispatch = jest.fn()
     map = {}
 
@@ -22,7 +23,7 @@ describe("<App /> component", () => {
       map[event] = cb
     })
 
-    wrapper = mount(<App dispatch={dispatch} />)
+    wrapper = shallow(<App dispatch={dispatch} />)
     instance = wrapper.instance()
     instance.handleKeyPress = jest.fn()
     await instance.componentDidMount()
@@ -34,6 +35,7 @@ describe("<App /> component", () => {
   })
 
   test("handleKeyPress function only plays audio on number key presses", () => {
+    expect.assertions(2)
     dispatch = jest.fn()
     wrapper = shallow(<App dispatch={dispatch} />)
     let instance = wrapper.instance()
