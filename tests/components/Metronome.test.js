@@ -18,4 +18,26 @@ describe("<Metronome /> component", () => {
     expect(instance.interval).toBe(null)
     expect(instance.bpmValue).toBe(50)
   })
+
+  test("Choosing an option changes the bpm", () => {
+    expect.assertions(1)
+    let dropDown = wrapper.find("select")
+    dropDown.simulate("change", {target: {value: 100}})
+
+    expect(instance.bpmValue).toBe(100)
+  })
+
+  test("Button toggles metronome on and off", () => {
+    expect.assertions(4)
+    let button = wrapper.find("button")
+    button.simulate("click")
+
+    expect(instance.ticking).toBeTruthy()
+    expect(instance.interval).not.toBe(null)
+
+    button.simulate("click")
+
+    expect(instance.ticking).not.toBeTruthy()
+    expect(instance.interval).toBe(null)
+  })
 })
