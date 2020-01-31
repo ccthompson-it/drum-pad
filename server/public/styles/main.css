@@ -159,7 +159,7 @@ span {
   position: fixed;
   bottom: 5vw;
   right: 3vw;
-  z-index: -1;
+  z-index: 1;
 }
 
 #slider-box {
