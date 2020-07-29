@@ -14,7 +14,7 @@ const soundByte = {
   coconut: 0
 }
 
-class Popup extends React.Component {
+class Graph extends React.Component {
 
   totalTime = 0
   startTime = 0
@@ -37,7 +37,7 @@ class Popup extends React.Component {
 
   render() {
 
-    let { currentBeat, togglePopup } = this.props
+    let { currentBeat, toggleGraph } = this.props
 
     if (currentBeat.length > 0) {
       this.totalTime = currentBeat[currentBeat.length - 1].timing - currentBeat[0].timing
@@ -61,7 +61,7 @@ class Popup extends React.Component {
               </div>
               <div className="graph">
                 {currentBeat.map((currentSound, i) => this.makeDot(currentSound.sound, currentSound.timing, i))}
-                <p id="popup-close" onClick={togglePopup}>X</p>
+                <p id="popup-close" onClick={toggleGraph}>X</p>
               </div>
             </div>
 
@@ -78,7 +78,7 @@ class Popup extends React.Component {
         <div className="overlay">
           <div className="popup-box">
             <p className="popup-text">There is no Current Recording</p>
-            <p id="popup-close" onClick={togglePopup}>X</p>
+            <p id="popup-close" onClick={toggleGraph}>X</p>
           </div>
         </div>
       )
@@ -93,4 +93,4 @@ function mapStateToProps(state) {
   }
 }
 
-export default connect(mapStateToProps)(Popup)
+export default connect(mapStateToProps)(Graph)

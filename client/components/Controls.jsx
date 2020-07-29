@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 
 import SoundPlayer from './SoundPlayer'
-import Popup from './Popup'
+import Graph from './Graph'
 
 import { setRecording, newRecording } from '../actions'
 
@@ -11,7 +11,7 @@ class Controls extends SoundPlayer {
     super(props)
 
     this.state = {
-      popupShowing: false
+      graphShowing: false
     }
   }
 
@@ -27,9 +27,8 @@ class Controls extends SoundPlayer {
     dispatch(newRecording())
   }
 
-
-  togglePopup = () => {
-    this.setState({ popupShowing: !this.state.popupShowing })
+  toggleGraph = () => {
+    this.setState({ graphShowing: !this.state.graphShowing })
   }
 
   render() {
@@ -44,10 +43,10 @@ class Controls extends SoundPlayer {
               </div>
             </span>
           </button>
-          <button id="toggle" className="round control" onClick={this.togglePopup}>See Recording</button>
+          <button id="toggle" className="round control" onClick={this.toggleGraph}>See Recording</button>
           <button id="play" className="round control" onClick={() => { this.playRecording() }}>Playback Audio</button>
         </div>
-        {this.state.popupShowing && <Popup togglePopup={this.togglePopup} />}
+        {this.state.graphShowing && <Graph toggleGraph={this.toggleGraph} />}
       </React.Fragment>
     )
   }
