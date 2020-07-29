@@ -30,7 +30,7 @@ class Graph extends React.Component {
     return (
       <React.Fragment key={i}>
         {/* <p className="popup-text" style={style}>{sound} {timing}</p> */}
-        <p className="test-dot" style={style}></p>
+        <p className="graph-dot" style={style}></p>
       </React.Fragment>
     )
   }
