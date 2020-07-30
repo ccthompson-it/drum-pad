@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 
 import SoundPlayer from './SoundPlayer'
 import Graph from './Graph'
+import SavedBeats from './SavedBeats'
 
 import { setRecording, newRecording } from '../actions'
 
@@ -11,7 +12,8 @@ class Controls extends SoundPlayer {
     super(props)
 
     this.state = {
-      graphShowing: false
+      graphShowing: false,
+      savedBeatsShowing: false
     }
   }
 
@@ -31,6 +33,10 @@ class Controls extends SoundPlayer {
     this.setState({ graphShowing: !this.state.graphShowing })
   }
 
+  toggleSavedBeats = () => {
+    this.setState({ savedBeatsShowing: !this.state.savedBeatsShowing })
+  }
+
   render() {
     return (
       <React.Fragment>
@@ -45,8 +51,10 @@ class Controls extends SoundPlayer {
           </button>
           <button id="toggle" className="round control" onClick={this.toggleGraph}>See Recording</button>
           <button id="play" className="round control" onClick={() => { this.playRecording() }}>Playback Audio</button>
+          <button id="saved" className="round control" onClick={this.toggleSavedBeats}>Saved Beats</button>
         </div>
         {this.state.graphShowing && <Graph toggleGraph={this.toggleGraph} />}
+        {this.state.savedBeatsShowing && <SavedBeats toggleSavedBeats={this.toggleSavedBeats} />}
       </React.Fragment>
     )
   }
