@@ -27,11 +27,13 @@ class SavedBeats extends React.Component {
 
   render() {
     let { toggleSavedBeats } = this.props
-    console.log(this.state.beats)
     return (
       <div className="overlay">
         <div className="popup-box">
-          <p className="popup-text">There is no Current Recording</p>
+          <p className="popup-text">Saved Beats:</p>
+          {this.state.beats.length > 0 && this.state.beats.map((beat, key) =>
+            <p key = {key} className="popup-text">{beat.beatName}: {(beat.beat[beat.beat.length - 1].timing - beat.beat[0].timing) / 1000} seconds long</p>
+          )}
           <p id="popup-close" onClick={toggleSavedBeats}>X</p>
         </div>
       </div>
