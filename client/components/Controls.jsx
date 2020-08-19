@@ -2,7 +2,8 @@ import React from 'react'
 import { connect } from 'react-redux'
 
 import SoundPlayer from './SoundPlayer'
-import Popup from './Popup'
+import Graph from './Graph'
+import SavedBeats from './SavedBeats'
 
 import { setRecording, newRecording } from '../actions'
 
@@ -11,7 +12,8 @@ class Controls extends SoundPlayer {
     super(props)
 
     this.state = {
-      popupShowing: false
+      graphShowing: false,
+      savedBeatsShowing: false
     }
   }
 
@@ -27,23 +29,12 @@ class Controls extends SoundPlayer {
     dispatch(newRecording())
   }
 
-  playRecording = (i = 0) => {
-    let beat = this.props.currentBeat
-    if (beat.length > 0) {
-      this.playAudio(beat[i].sound)
-
-      if (i + 1 == beat.length) { return }
-
-      let waitTime = beat[i + 1].timing - beat[i].timing
-      setTimeout(() => this.playRecording(i + 1), waitTime)
-    }
-    else {
-      alert("There is no Current Recording")
-    }
+  toggleGraph = () => {
+    this.setState({ graphShowing: !this.state.graphShowing })
   }
 
-  togglePopup = () => {
-    this.setState({ popupShowing: !this.state.popupShowing })
+  toggleSavedBeats = () => {
+    this.setState({ savedBeatsShowing: !this.state.savedBeatsShowing })
   }
 
   render() {
@@ -52,16 +43,18 @@ class Controls extends SoundPlayer {
         <div id="controls">
           <button id="clear" className="round control" onClick={this.clearRecording}>Clear Recording</button>
           <button id="record" className="round control" onClick={this.toggleRecord}>
-            <span id={this.props.recording ? "rec-status" : ""}>
+            <span className="rec-ring" id={this.props.recording ? "rec-status" : ""}>
               <div id="inner-record">
                 <p>Record</p>
               </div>
             </span>
           </button>
-          <button id="toggle" className="round control" onClick={this.togglePopup}>See Recording</button>
+          <button id="toggle" className="round control" onClick={this.toggleGraph}>See Recording</button>
           <button id="play" className="round control" onClick={() => { this.playRecording() }}>Playback Audio</button>
+          <button id="saved" className="round control" onClick={this.toggleSavedBeats}>Load / Save Beats</button>
         </div>
-        {this.state.popupShowing && <Popup togglePopup={this.togglePopup} />}
+        {this.state.graphShowing && <Graph toggleGraph={this.toggleGraph} />}
+        {this.state.savedBeatsShowing && <SavedBeats toggleSavedBeats={this.toggleSavedBeats} />}
       </React.Fragment>
     )
   }
