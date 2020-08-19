@@ -10,7 +10,8 @@
     "build": "webpack --config client/webpack.config.js",
     "server": "node server",
     "start": "node server",
-    "test": "jest --verbose --watchAll --colors"
+    "test": "jest --verbose --watchAll --colors",
+    "postinstall": "webpack && knex migrate:latest"
   },
   "babel": {
     "presets": [
