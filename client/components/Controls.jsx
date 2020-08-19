@@ -43,7 +43,7 @@ class Controls extends SoundPlayer {
         <div id="controls">
           <button id="clear" className="round control" onClick={this.clearRecording}>Clear Recording</button>
           <button id="record" className="round control" onClick={this.toggleRecord}>
-            <span id={this.props.recording ? "rec-status" : ""}>
+            <span className="rec-ring" id={this.props.recording ? "rec-status" : ""}>
               <div id="inner-record">
                 <p>Record</p>
               </div>
@@ -51,7 +51,7 @@ class Controls extends SoundPlayer {
           </button>
           <button id="toggle" className="round control" onClick={this.toggleGraph}>See Recording</button>
           <button id="play" className="round control" onClick={() => { this.playRecording() }}>Playback Audio</button>
-          <button id="saved" className="round control" onClick={this.toggleSavedBeats}>Saved Beats</button>
+          <button id="saved" className="round control" onClick={this.toggleSavedBeats}>Load / Save Beats</button>
         </div>
         {this.state.graphShowing && <Graph toggleGraph={this.toggleGraph} />}
         {this.state.savedBeatsShowing && <SavedBeats toggleSavedBeats={this.toggleSavedBeats} />}

@@ -25,15 +25,34 @@ class SavedBeats extends React.Component {
     })
   }
 
+  handleClick = (id, beat) => {
+    console.log("Pressed!", id, beat)
+  }
+
   render() {
     let { toggleSavedBeats } = this.props
     return (
       <div className="overlay">
         <div className="popup-box">
-          <p className="popup-text">Saved Beats:</p>
-          {this.state.beats.length > 0 && this.state.beats.map((beat, key) =>
-            <p key = {key} className="popup-text">{beat.beatName}: {(beat.beat[beat.beat.length - 1].timing - beat.beat[0].timing) / 1000} seconds long</p>
-          )}
+          <table>
+            <thead>
+              <tr>
+                <th>Beat Name</th>
+                <th>Beat Length</th>
+                <th>Options</th>
+              </tr>
+            </thead>
+            <tbody>
+              {this.state.beats.length > 0 && this.state.beats.map((beat, id) =>
+                <tr key={id}>
+                  <td>{beat.beatName}</td>
+                  <td>{(beat.beat[beat.beat.length - 1].timing - beat.beat[0].timing) / 1000} seconds</td>
+                  <td><span onClick={() => this.handleClick(id, beat)}>Press!</span></td>
+                </tr>
+              )}
+            </tbody>
+
+          </table>
           <p id="popup-close" onClick={toggleSavedBeats}>X</p>
         </div>
       </div>

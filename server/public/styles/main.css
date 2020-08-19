@@ -45,8 +45,11 @@ header {
 
 
 #sound-pad {
+  z-index: -1;
+  position: fixed;
   width: 60vw;
   margin-left: 20vw;
+  margin-right: 0;
   margin-top: 25vh;
 }
 
@@ -117,7 +120,7 @@ a:hover {
 
 /* Record Button */ 
 
-span {
+.rec-ring {
   display: block;
   background-color: #a75c5c;
   transition: ease-in-out .2s;
@@ -252,4 +255,28 @@ span {
   border-radius: 50%;
   background-color: yellow;
   position: fixed;
+}
+
+/* Saved Beats Table */
+
+table {
+  width: 100%;
+  color: #eeeeee;
+  font-family: 'Chelsea Market', cursive;
+  border-collapse: collapse;
+}
+
+/* thead {
+  
+} */
+
+th {
+  text-align: left;
+  font-size: 2.5rem;
+  height: 15vh; 
+  border-bottom: 1vh solid #eeeeee;
+}
+
+td {
+  font-size: 1.5rem
 }
