@@ -25,8 +25,12 @@ class SavedBeats extends React.Component {
     })
   }
 
-  handleClick = (id, beat) => {
-    console.log("Pressed!", id, beat)
+  handleDelete = (id) => {
+    console.log("Pressed!", id)
+  }
+
+  handleLoad = (beat) => {
+    console.log("Pressed!", beat)
   }
 
   render() {
@@ -47,7 +51,10 @@ class SavedBeats extends React.Component {
                 <tr key={id}>
                   <td>{beat.beatName}</td>
                   <td>{(beat.beat[beat.beat.length - 1].timing - beat.beat[0].timing) / 1000} seconds</td>
-                  <td><span onClick={() => this.handleClick(id, beat)}>Press!</span></td>
+                  <td>
+                    <span className="beat-option" onClick={() => this.handleLoad(beat)}>Load</span>
+                    <span className="beat-option" onClick={() => this.handleDelete(id)}>Delete</span>
+                  </td>
                 </tr>
               )}
             </tbody>
