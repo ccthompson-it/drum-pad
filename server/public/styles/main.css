@@ -173,6 +173,27 @@ a:hover {
   width: 15vw;
 }
 
+select {
+  background-color: #3a4750;
+  border-radius: .5vw;
+  color: #eeeeee;
+  border: none;
+  box-shadow: 0px 0px .5vw #eeeeee;
+  height: 10vw;
+  margin-top: 2.5vw;
+}
+
+select:hover {
+  transition: ease-in-out .15s;
+  box-shadow: 0px .3vw .5vw #eeeeee;
+}
+
+select:active {
+  outline: none;
+  box-shadow: 0px 0px .5vw #eeeeee;
+}
+
+/* Popup */
 
 .overlay {
   position: fixed;
