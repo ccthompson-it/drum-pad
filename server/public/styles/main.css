@@ -290,7 +290,7 @@ table {
 th {
   text-align: left;
   font-size: 2.5rem;
-  height: 15vh; 
+  height: 10vh; 
   border-bottom: 1vh solid #eeeeee;
 }
 
@@ -298,8 +298,7 @@ td {
   font-size: 1.5rem
 }
 
-.beat-options {
-  width: 50%;
+.beat-option {
   margin-right: 2vw;
 }
 
