@@ -1,4 +1,4 @@
-import {NEW_BEAT, ADDTO_BEAT} from '../actions'
+import {NEW_BEAT, ADDTO_BEAT, LOAD_BEAT} from '../actions'
 
 function currentBeat (state = [], action) {
   switch (action.type) {
@@ -12,6 +12,8 @@ function currentBeat (state = [], action) {
           timing: Date.now()
         }
       ]
+    case LOAD_BEAT:
+      return action.beat
     default:
       return state
   }
