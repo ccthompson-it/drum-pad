@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { getBeats, saveBeat } from '../apiClient'
+import { getBeats, saveBeat, deleteBeat } from '../apiClient'
 
 import { loadBeat } from '../actions'
 
@@ -19,6 +19,7 @@ class SavedBeats extends React.Component {
       this.setState({
         beats: beats.map(beat => {
           return {
+            id: beat.id,
             beatName: beat.beat_name,
             beat: JSON.parse(beat.beat)
           }
@@ -28,13 +29,14 @@ class SavedBeats extends React.Component {
   }
 
   handleDelete = (id) => {
-    console.log("Pressed!", id)
+    deleteBeat(id)
+    this.props.toggleSavedBeats()
   }
 
   handleLoad = (beat) => {
-    const { dispatch } = this.props
+    const { toggleSavedBeats, dispatch } = this.props
     dispatch(loadBeat(beat))
-    console.log("Pressed!", beat)
+    toggleSavedBeats()
   }
 
   handleSave = () => {
@@ -57,7 +59,7 @@ class SavedBeats extends React.Component {
               </tr>
             </thead>
             <tbody>
-              {this.state.beats.length > 0 && this.state.beats.map(({ beat, beatName }, id) =>
+              {this.state.beats.length > 0 && this.state.beats.map(({ beat, beatName, id }) =>
                 <tr key={id}>
                   <td>{beatName}</td>
                   <td>{(beat[beat.length - 1].timing - beat[0].timing) / 1000} seconds</td>

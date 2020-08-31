@@ -10,15 +10,14 @@ export function getBeats() {
 }
 
 export function saveBeat(beat) {
-  console.log(beat)
   return request.post(rootUrl + '/beats', {beat: JSON.stringify(beat), beat_name: 'Custom Beat'})
     .then(res => {
       return res.body
     })
 }
 
-export function deleteBeat() {
-  return request.delete(rootUrl + '/beats')
+export function deleteBeat(id) {
+  return request.delete(rootUrl + '/beats/' + id)
     .then(res => {
       return res.body
     })

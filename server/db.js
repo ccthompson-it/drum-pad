@@ -17,5 +17,5 @@ function saveBeat(beat, db = connection) {
 }
 
 function deleteBeat(id, db = connection) {
-  return db('beats').delete().where('id', id)
+  return db('beats').del().where('id', id)
 }

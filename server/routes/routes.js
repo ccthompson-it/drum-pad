@@ -16,8 +16,7 @@ router.get('/beats', (req, res) => {
 })
 
 router.post('/beats', (req, res) => {
-  console.log(req.body)
-  db.saveBeat({ beat: req.body.beat, beat_name: req.body.beat_name })
+  db.saveBeat(req.body)
     .then(() => {
       res.send(true)
     })
@@ -26,8 +25,8 @@ router.post('/beats', (req, res) => {
     })
 })
 
-router.delete('/beats', (req, res) => {
-  db.deleteBeat(id)
+router.delete('/beats/:id', (req, res) => {
+  db.deleteBeat(req.params.id)
     .then(() => {
       res.send(true)
     })
