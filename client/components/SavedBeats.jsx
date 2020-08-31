@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { getBeats } from '../apiClient'
+import { getBeats, saveBeat } from '../apiClient'
 
 import { loadBeat } from '../actions'
 
@@ -32,13 +32,19 @@ class SavedBeats extends React.Component {
   }
 
   handleLoad = (beat) => {
-    const {dispatch} = this.props
+    const { dispatch } = this.props
     dispatch(loadBeat(beat))
     console.log("Pressed!", beat)
   }
 
+  handleSave = () => {
+    const { toggleSavedBeats, currentBeat } = this.props
+    saveBeat(currentBeat)
+    toggleSavedBeats()
+  }
+
   render() {
-    let { toggleSavedBeats } = this.props
+    const { toggleSavedBeats } = this.props
     return (
       <div className="overlay">
         <div className="popup-box">
@@ -51,7 +57,7 @@ class SavedBeats extends React.Component {
               </tr>
             </thead>
             <tbody>
-              {this.state.beats.length > 0 && this.state.beats.map(({beat, beatName}, id) =>
+              {this.state.beats.length > 0 && this.state.beats.map(({ beat, beatName }, id) =>
                 <tr key={id}>
                   <td>{beatName}</td>
                   <td>{(beat[beat.length - 1].timing - beat[0].timing) / 1000} seconds</td>
@@ -65,10 +71,17 @@ class SavedBeats extends React.Component {
 
           </table>
           <p id="popup-close" onClick={toggleSavedBeats}>X</p>
+          <p id="save-button" onClick={this.handleSave}>Save Current Beat</p>
         </div>
       </div>
     )
   }
 }
 
-export default connect()(SavedBeats)
+function mapStateToProps(state) {
+  return {
+    currentBeat: state.currentBeat
+  }
+}
+
+export default connect(mapStateToProps)(SavedBeats)
