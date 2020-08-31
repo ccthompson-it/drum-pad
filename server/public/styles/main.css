@@ -288,17 +288,39 @@ table {
   border-collapse: collapse;
 }
 
-/* thead {
-  
-} */
-
 th {
   text-align: left;
   font-size: 2.5rem;
-  height: 15vh; 
+  height: 10vh; 
   border-bottom: 1vh solid #eeeeee;
 }
 
 td {
   font-size: 1.5rem
+}
+
+.beat-option {
+  margin-right: 2vw;
+  cursor: pointer;
+}
+
+tbody > tr {
+  height: 10vh;
+}
+
+#save-button {
+  position: fixed;
+  top: 80vh;
+  left: 15vw;
+  font-size: 1.5rem;
+  color: #eeeeee;
+  font-family: 'Chelsea Market', cursive;
+  cursor: pointer;
+  transition: ease-in-out 0.25s;
+}
+
+#save-button:hover {
+  font-size: 1.6rem;
+  left: 14.75vw;
+  color: greenyellow;
 }
