@@ -105,12 +105,12 @@ a:hover {
   border: none;
   outline: none;
   box-shadow: 0px 0px .5vw #eeeeee;
+  transition: ease-in-out .15s;
 }
 
 .round:hover {
   background-color: #e00303;
   color: #eeeeee;
-  transition: ease-in-out .15s;
   box-shadow: 0px .3vw .5vw #eeeeee;
 }
 
@@ -134,7 +134,6 @@ a:hover {
 
 #rec-status {
   background-color: greenyellow;
-  transition: ease-in-out .2s;
 }
 
 #inner-record {
@@ -174,6 +173,7 @@ a:hover {
 }
 
 select {
+  font-family: 'Chelsea Market', cursive;
   background-color: #3a4750;
   border-radius: .5vw;
   color: #eeeeee;
@@ -289,14 +289,15 @@ table {
 }
 
 th {
+  width: 33%;
   text-align: left;
-  font-size: 2.5rem;
+  font-size: 3vw;
   height: 10vh; 
   border-bottom: 1vh solid #eeeeee;
 }
 
 td {
-  font-size: 1.5rem
+  font-size: 2vw;
 }
 
 .beat-option {
@@ -312,15 +313,31 @@ tbody > tr {
   position: fixed;
   top: 80vh;
   left: 15vw;
-  font-size: 1.5rem;
-  color: #eeeeee;
+  font-size: 2.5vw;
+  color: #daffa3;
   font-family: 'Chelsea Market', cursive;
   cursor: pointer;
   transition: ease-in-out 0.25s;
 }
 
 #save-button:hover {
-  font-size: 1.6rem;
-  left: 14.75vw;
   color: greenyellow;
+}
+
+.delete-button {
+  color: #a75c5c;
+  transition: ease-in-out .25s;
+}
+
+.delete-button:hover {
+  color: #d72323;
+}
+
+.load-button {
+  color: #f6eea8;
+  transition: ease-in-out .25s;
+}
+
+.load-button:hover {
+  color: #ffeb36;
 }
