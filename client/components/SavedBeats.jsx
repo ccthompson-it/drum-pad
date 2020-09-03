@@ -41,6 +41,14 @@ class SavedBeats extends React.Component {
 
   handleSave = () => {
     const { toggleSavedBeats, currentBeat } = this.props
+    if(!currentBeat.length) {
+      alert("There is Nothing Recorded")
+      return
+    }
+    if(this.state.beats.length >= 5) {
+      alert("There are Already 5 Beats Saved!")
+      return
+    }
     saveBeat(currentBeat)
     toggleSavedBeats()
   }
@@ -64,8 +72,8 @@ class SavedBeats extends React.Component {
                   <td>{beatName}</td>
                   <td>{(beat[beat.length - 1].timing - beat[0].timing) / 1000} seconds</td>
                   <td>
-                    <span className="beat-option" onClick={() => this.handleLoad(beat)}>Load</span>
-                    <span className="beat-option" onClick={() => this.handleDelete(id)}>Delete</span>
+                    <span className="beat-option load-button" onClick={() => this.handleLoad(beat)}>Load</span>
+                    <span className="beat-option delete-button" onClick={() => this.handleDelete(id)}>Delete</span>
                   </td>
                 </tr>
               )}
