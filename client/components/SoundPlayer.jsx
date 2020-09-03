@@ -15,7 +15,7 @@ class SoundPlayer extends Component {
       setTimeout(() => this.playRecording(i + 1), waitTime)
     }
     else {
-      alert("There is no Current Recording")
+      alert("There is Nothing Recorded!")
     }
   }
   
