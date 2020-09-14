@@ -9,8 +9,8 @@ export function getBeats() {
     })
 }
 
-export function saveBeat(beat) {
-  return request.post(rootUrl + '/beats', {beat: JSON.stringify(beat), beat_name: 'Custom Beat'})
+export function saveBeat(beat, beatName) {
+  return request.post(rootUrl + '/beats', {beat: JSON.stringify(beat), beat_name: beatName})
     .then(res => {
       return res.body
     })
