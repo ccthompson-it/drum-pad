@@ -4,12 +4,15 @@ import { getBeats, saveBeat, deleteBeat } from '../apiClient'
 
 import { loadBeat } from '../actions'
 
+import App from './App'
+
 
 class SavedBeats extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      beats: []
+      beats: [],
+      beatName: "",
     }
   }
 
@@ -41,16 +44,25 @@ class SavedBeats extends React.Component {
 
   handleSave = () => {
     const { toggleSavedBeats, currentBeat } = this.props
-    if(!currentBeat.length) {
+    const { beatName } = this.state
+
+    if (!currentBeat.length) {
       alert("There is Nothing Recorded")
       return
     }
-    if(this.state.beats.length >= 5) {
+    if (this.state.beats.length >= 5) {
       alert("There are Already 5 Beats Saved!")
       return
     }
-    saveBeat(currentBeat)
+    saveBeat(currentBeat, beatName)
     toggleSavedBeats()
+  }
+
+  handleInput = (e) => {
+    if(this.state.beatName.length > 15) {
+      return
+    }
+    this.setState({beatName: e.target.value})
   }
 
   render() {
@@ -81,7 +93,10 @@ class SavedBeats extends React.Component {
 
           </table>
           <p id="popup-close" onClick={toggleSavedBeats}>X</p>
-          <p id="save-button" onClick={this.handleSave}>Save Current Beat</p>
+          <div id="save-bar">
+            <p id="save-button" onClick={this.handleSave}>Save Current Beat</p>
+            <input id="save-input" placeholder="Beat Name" onChange={this.handleInput} value={this.state.beatName}></input>
+          </div>
         </div>
       </div>
     )
