@@ -4,8 +4,6 @@ import { getBeats, saveBeat, deleteBeat } from '../apiClient'
 
 import { loadBeat } from '../actions'
 
-import App from './App'
-
 
 class SavedBeats extends React.Component {
   constructor(props) {
