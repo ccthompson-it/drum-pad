@@ -46,21 +46,27 @@ class SavedBeats extends React.Component {
 
     if (!currentBeat.length) {
       alert("There is Nothing Recorded")
-      return
     }
-    if (this.state.beats.length >= 5) {
+
+    else if (this.state.beats.length >= 5) {
       alert("There are Already 5 Beats Saved!")
-      return
     }
-    saveBeat(currentBeat, beatName)
-    toggleSavedBeats()
+
+    else if (beatName.replace(/\s/g, "") === "") {
+      alert("Please enter a beat name")
+    }
+
+    else {
+      saveBeat(currentBeat, beatName)
+      toggleSavedBeats()
+    }
   }
 
   handleInput = (e) => {
-    if(this.state.beatName.length > 15) {
+    if (this.state.beatName.length > 15) {
       return
     }
-    this.setState({beatName: e.target.value})
+    this.setState({ beatName: e.target.value })
   }
 
   render() {
