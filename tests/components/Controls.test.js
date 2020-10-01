@@ -36,19 +36,34 @@ describe("<Controls /> component", () => {
     instance = wrapper.instance()
   })
 
-  test("Default popup state is false", () => {
+  test("Default graph popup state is false", () => {
     expect.assertions(1)
-    expect(instance.state.popupShowing).toBe(false)
+    expect(instance.state.graphShowing).toBe(false)
   })
 
-  test("pressing the 'see recording' button toggles the popup", () => {
+  test("pressing the 'see recording' button toggles the graph popup", () => {
     expect.assertions(3)
     let button = wrapper.find("#toggle")
-    expect(instance.state.popupShowing).toBe(false)
+    expect(instance.state.graphShowing).toBe(false)
     button.simulate("click")
-    expect(instance.state.popupShowing).toBe(true)
+    expect(instance.state.graphShowing).toBe(true)
     button.simulate("click")
-    expect(instance.state.popupShowing).toBe(false)
+    expect(instance.state.graphShowing).toBe(false)
+  })
+
+  test("Default saved beats popup state is false", () => {
+    expect.assertions(1)
+    expect(instance.state.savedBeatsShowing).toBe(false)
+  })
+
+  test("pressing the 'saved beats' button toggles the saved beats popup", () => {
+    expect.assertions(3)
+    let button = wrapper.find("#saved")
+    expect(instance.state.savedBeatsShowing).toBe(false)
+    button.simulate("click")
+    expect(instance.state.savedBeatsShowing).toBe(true)
+    button.simulate("click")
+    expect(instance.state.savedBeatsShowing).toBe(false)
   })
 
   test("pressing the 'clear' button calls dispatch once with the clear action", () => {
