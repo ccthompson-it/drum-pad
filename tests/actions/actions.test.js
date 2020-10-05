@@ -18,3 +18,10 @@ test('addToBeat', () => {
   expect(action.type).toBe("ADDTO_BEAT")
   expect(action.sound).toBe("BassKick")
 })
+
+test('loadBeat', () => {
+  expect.assertions(2)
+  let action = actions.loadBeat("Snare")
+  expect(action.type).toBe("LOAD_BEAT")
+  expect(action.beat).toBe("Snare")
+})
