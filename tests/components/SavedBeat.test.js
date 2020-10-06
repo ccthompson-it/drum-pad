@@ -69,11 +69,12 @@ describe("<SavedBeats /> component", () => {
   })
 
   test("Pressing load calls dispatch with the correct action and beat", () => {
-    expect.assertions(2)
+    expect.assertions(3)
     let button = wrapper.find('.load-button').at(1)
     button.simulate('click')
 
     expect(dispatch).toHaveBeenCalled()
     expect(dispatch.mock.calls[0][0].type).toBe('LOAD_BEAT')
+    expect(dispatch.mock.calls[0][0].beat[0].sound).toBe('basskick')
   })
 })
