@@ -1,8 +1,10 @@
 import SavedBeats from "../../client/components/SavedBeats"
+import apiClient from '../../client/apiClient'
 
 import React from 'react'
 import { shallow } from "enzyme"
 
+window.alert = jest.fn()
 
 jest.mock('react-redux', () => {
   return {
@@ -60,21 +62,95 @@ describe("<SavedBeats /> component", () => {
   })
 
   test("Pressing a delete button calls the deleteBeat function and closes the popup", () => {
-    expect.assertions(1)
-    instance.handleDelete = jest.fn()
+    expect.assertions(2)
+    apiClient.deleteBeat = jest.fn()
     let button = wrapper.find('.delete-button').at(0)
     button.simulate("click")
 
-    expect(instance.handleDelete).toHaveBeenCalledWith(1)
+    expect(apiClient.deleteBeat).toHaveBeenCalledWith(1)
+    expect(toggleSavedBeats).toHaveBeenCalled()
   })
 
-  test("Pressing load calls dispatch with the correct action and beat", () => {
-    expect.assertions(3)
+  test("Pressing a load button calls dispatch with the correct action and beat and closes the popup", () => {
+    expect.assertions(4)
     let button = wrapper.find('.load-button').at(1)
     button.simulate('click')
 
     expect(dispatch).toHaveBeenCalled()
     expect(dispatch.mock.calls[0][0].type).toBe('LOAD_BEAT')
     expect(dispatch.mock.calls[0][0].beat[0].sound).toBe('basskick')
+    expect(toggleSavedBeats).toHaveBeenCalled()
+  })
+
+  test("Pressing the save button with nothing recorded alerts the user", () => {
+
+    wrapper.setProps({currentBeat: []})
+    expect.assertions(3)
+    
+    window.alert.mockClear()
+    expect(window.alert).not.toHaveBeenCalled()
+
+    let button = wrapper.find('#save-button')
+    button.simulate('click')
+
+    expect(window.alert).toHaveBeenCalled()
+    expect(dispatch).not.toHaveBeenCalled()
+  })
+
+  test("Pressing the save button 5 beats already recorded alerts the user", () => {
+
+    instance.state.beats = [{}, {}, {}, {}, {}]
+    expect.assertions(3)
+    
+    window.alert.mockClear()
+    expect(window.alert).not.toHaveBeenCalled()
+
+    let button = wrapper.find('#save-button')
+    button.simulate('click')
+
+    expect(window.alert).toHaveBeenCalledWith("There are Already 5 Beats Saved!")
+    expect(dispatch).not.toHaveBeenCalled()
+  })
+
+  test("Pressing the save button with no name for the beat alerts the user", () => {
+
+    expect.assertions(3)
+    
+    window.alert.mockClear()
+    expect(window.alert).not.toHaveBeenCalled()
+
+    let button = wrapper.find('#save-button')
+    button.simulate('click')
+
+    expect(window.alert).toHaveBeenCalledWith("Please enter a beat name")
+    expect(dispatch).not.toHaveBeenCalled()
+  })
+
+  test("Pressing the save button with a beat name entered calls the saveBeat function and closes the popup", () => {
+
+    expect.assertions(2)
+
+    instance.state.beatName = "Cool Beat"
+    apiClient.saveBeat = jest.fn()
+
+    let button = wrapper.find('#save-button')
+    button.simulate('click')
+
+    expect(apiClient.saveBeat).toHaveBeenCalledWith(fakeBeat, "Cool Beat")
+    expect(toggleSavedBeats).toHaveBeenCalled()
+  })
+
+  test("Pressing the save button with a beat name entered calls the saveBeat function and closes the popup", () => {
+
+    expect.assertions(2)
+
+    instance.state.beatName = "Cool Beat"
+    apiClient.saveBeat = jest.fn()
+
+    let button = wrapper.find('#save-button')
+    button.simulate('click')
+
+    expect(apiClient.saveBeat).toHaveBeenCalledWith(fakeBeat, "Cool Beat")
+    expect(toggleSavedBeats).toHaveBeenCalled()
   })
 })
