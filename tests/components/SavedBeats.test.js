@@ -140,17 +140,18 @@ describe("<SavedBeats /> component", () => {
     expect(toggleSavedBeats).toHaveBeenCalled()
   })
 
-  test("Pressing the save button with a beat name entered calls the saveBeat function and closes the popup", () => {
+  test("The beat name input only allows names up to 16 characters long", () => {
 
     expect.assertions(2)
 
-    instance.state.beatName = "Cool Beat"
-    apiClient.saveBeat = jest.fn()
+    instance.state.beatName = "123456789012345"
 
-    let button = wrapper.find('#save-button')
-    button.simulate('click')
+    let input = wrapper.find('#save-input')
 
-    expect(apiClient.saveBeat).toHaveBeenCalledWith(fakeBeat, "Cool Beat")
-    expect(toggleSavedBeats).toHaveBeenCalled()
+    input.simulate('change', {target: {value: '1234567890123456'}})
+    expect(instance.state.beatName).toBe('1234567890123456')
+    
+    input.simulate('change', {target: {value: '12345678901234567'}})
+    expect(instance.state.beatName).toBe('1234567890123456')
   })
 })
